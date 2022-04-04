@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>HI! WELCOME TO MY BLOG ABOUT REAL ESTATE IN BISHKEK</h1>
+									{% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                    <div class="alert alert-secondary" role="alert">{{ message }}</div>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+									<p>This blog is aimed to help expats, migrants and visiting tourists to get to known <br />
+									 with details and peculiarities of renting and living in Bishkek<br />
+									</p>
+								</header>
+								<div class="image main"><img src="{% static 'images/bishkek.jpeg' %}" style="width: auto; height: auto;" alt="" /></div>
+								<div class="posts">
+
+									<nav class="navbar navbar-light bg-dark">
+
+
+										{% for apartment in apartments %}
+										<article>
+									       <a href="#" class="image fit"><img src="{{ apartment.get_image }}" style="width: 200px; height: 200px;" alt="" /></a>
+									       <h3>{{ apartment }}</h3>
+									       <p>{{ apartment.description|truncatewords:20 }}</p>
+									       <ul class="actions special">
+										       <li><a href="{% url 'detail' apartment.id %}" class="button">Read more</a></li>
+									       </ul>
+										</article>
+										{% endfor %}
+								    </div>
+							</section>
+
+
+
+<nav aria-label="...">
+  <ul class="pagination pagination-sm">
+	  {% if page_obj.has_previous %}
+	  <li class="page-item"><a class="page-link" href="{% url 'home' %}?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+      {% endif %}
+	<li class="page-item active" aria-current="page">
+      <span class="page-link">{{ page_obj.number }}</span>
+    </li>
+      {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="{% url 'home' %}?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+	  {% endif %}
+  </ul>
+</nav>
+					</div>
+{% endblock %}
+

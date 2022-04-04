@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>New informations:</h1>
+<div class="posts">
+    {% for apartment in apartments %}
+    <article>
+        <a href="#" class="image fit"><img src="{{ apartment.get_image }}" style="width: 200px; height: 200px;" alt="" /></a>
+        <h3>{{ apartment }}</h3>
+        <p>{{ apartment.description|truncatewords:20 }}</p>
+        <ul class="actions special">
+            <li><a href="{% url 'detail' apartment.id %}" class="button">Read more</a></li>
+        </ul>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}

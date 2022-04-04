@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>{{ apartment.title }}</h1>
+								</header>
+								<div class="image main"><img src="{{ apartment.get_image }}" style="width: auto; height: auto;" alt="" /></div>
+								<p>Posted: {{ apartment.created }}</p>
+								<p>Author: {{ apartment.user.username }}</p>
+							</section>
+                                {% for image in images %}
+                                <img src="{{ image }}" style="width: 300; height: 300;" class="rounded float-start" alt="...">
+                                <img src="{{ image }}" style="width: 300; height: 300;" class="rounded float-end" alt="...">
+                                {% endfor %}
+                                <h2>{{ apartment.description|truncatewords:5 }}</h2>
+                                <p>{{ apartment.description }}</p>
+                                <a href="{% url 'update-info' apartment.id %}"><i class="fas fa-edit"></i></a>
+                                <a href="{% url 'delete-info' apartment.id %}"><i class="fas fa-trash-alt"></i></a>
+
+					</div>
+{% endblock %}

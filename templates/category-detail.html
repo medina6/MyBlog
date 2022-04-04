@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="post">
+<header class="major">
+<!--	<span class="date">April 25, 2017</span>-->
+	<h1>{{ category.name }}</h1>
+<!--	<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />amet nullam sed etiam veroeros.</p>-->
+	{% if category.get_children %}
+	{% for child in category.get_children %}
+	    <a href="{% url 'category' child.slug %}"><li>{{ child }}</li></a>
+	{% endfor %}
+	{% endif %}
+</header>
+	<span class="image object">
+		<a href="#" class="image fit"><img src="{{ category.image.url }}" style="width: 500px; height: 500px;" alt="" /></a>
+	</span>
+</section>
+						<!-- Posts -->
+                        {% if not gategory.get_children %}
+                            <section>
+								<section class="posts">
+									<header>
+										<h2></h2>
+									</header>
+									<div class="posts">
+										{% for apartment in apartments %}
+										<article>
+									       <a href="#" class="image fit"><img src="{{ apartment.get_image }}" style="width: 300px; height: 300px;" alt="" /></a>
+									       <h3>{{ apartment }}</h3>
+									       <p>{{ apartment.description|truncatewords:40 }}</p>
+									       <ul class="actions special">
+										       <li><a href="{% url 'detail' apartment.id %}" class="button">Read more</a></li>
+									       </ul>
+										</article>
+										{% endfor %}
+									</div>
+								</section>
+							</section>
+                        {% endif %}
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

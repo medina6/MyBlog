@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="post">
+<header class="major">
+<!--	<span class="date">April 25, 2017</span>-->
+	<h1>{{ request.user.username }}</h1>
+
+</header>
+    <p>{{ request.user }}</p>
+    <p>{{ request.user.date_joined }}</p>
+	<span class="image object">
+		<a href="#" class="image fit"><img src="{{ request.user.image.url }}" style="width: 500px; height: 500px;" alt="" /></a>
+	</span>
+</section>
+{% endblock %}
